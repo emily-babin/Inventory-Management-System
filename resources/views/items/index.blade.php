@@ -41,7 +41,7 @@
                                         {{-- Delete Button --}}
                                         <div style="float:left;">
                                             <form method="POST" action="/items/{{ $item->id }}" 
-                                                  onsubmit="return confirm('Deleting item. Are you sure you want to proceed?')">
+                                                  onsubmit="return confirm('Deleting {{ $item->title }}. Are you sure you want to proceed?')">
                                                 @csrf
                                                 <input type="hidden" name="_method" value="DELETE"/>
                                                 <input type="submit" name="submit" value="Delete" class="btn btn-sm btn-danger" style="margin-left: 5px">

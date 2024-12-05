@@ -37,7 +37,7 @@ class ItemController extends Controller
         // Insert into database or show error
         $rules = [
             'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255|unique:items,title',
+            'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
@@ -102,7 +102,7 @@ class ItemController extends Controller
     {
         $rules = [
             'category_id' => 'required|exists:categories,id',
-            'title' => 'required|string|max:255|unique:items,title,' . $id,
+            'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
@@ -148,6 +148,15 @@ class ItemController extends Controller
         if (!$item) {
             dd("no item found");
         } else {
+
+            if ($item->picture) {
+                $filePath = storage_path('app/public/' . $item->picture);
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                }
+            }
+        
+
             $item->delete();
             Session::flash('success', 'Item deleted.');
         }

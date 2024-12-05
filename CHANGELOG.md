@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0] - 2024-12-05
+### Changed
+- Removed banner error messages to be just in the field
+    on the Item create and Item edit forms
+
+### Fixed
+- Images delete from folder when item is deleted 
+
+
+
 ## [0.4] - 2024-12-05
 ### Added
 - Route for PATCH method

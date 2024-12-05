@@ -4,7 +4,7 @@
     </div>
 @endif
 
-@if (Session::has('error')) 
+{{-- @if (Session::has('error')) 
     <div class='alert alert-danger' role='danger'>
         <strong>Errors: </strong> {{ Session::get('error') }}
     </div>
@@ -19,5 +19,5 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif --}}
 
