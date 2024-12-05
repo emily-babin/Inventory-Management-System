@@ -10,7 +10,7 @@
                         <form method="POST" action="/categories">
                             @csrf
                             <label for="category">Category</label>
-                            <input type="text" class="form-control" name="category" title="category" />
+                            <input type="text" class="form-control" name="category" title="category" value="{{ old('category') }}"/>
                             <div class="text-end">
                                 <a href="/categories" class="btn btn-lg btn-danger btn-block" style="margin-top:20px">Cancel</a>
                                 <input type="submit" value="Add" class="btn btn-primary btn-lg btn-block" style="margin-top: 20px" />

@@ -16,3 +16,6 @@ Route::resource('categories', App\Http\Controllers\CategoryController::class);
 
 Route::resource('items', App\Http\Controllers\ItemController::class);
 Route::get('/items/delete/{id}', [App\Http\Controllers\ItemController::class, 'confirmDelete']) -> name('items.confirmDelete');
+
+Route::patch('/categories/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('categories.update');
+Route::patch('/items/{id}', [App\Http\Controllers\ItemController::class, 'update'])->name('items.update');

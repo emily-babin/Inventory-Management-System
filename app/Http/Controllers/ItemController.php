@@ -38,7 +38,7 @@ class ItemController extends Controller
         $rules = [
             'category_id' => 'required|exists:categories,id',
             'title' => 'required|string|max:255|unique:items,title',
-            'description' => 'nullable|string|max:255',
+            'description' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
             'sku' => 'required|string|unique:items,sku|max:50',
@@ -50,6 +50,10 @@ class ItemController extends Controller
         $filePath = null;
         if ($request->hasFile('picture')) {
             $filePath = $request->file('picture')->store('images', 'public');
+        }
+
+        if ($filePath == null) {
+            $filePath = "";
         }
 
         $item = new \App\Models\Item();
@@ -99,10 +103,10 @@ class ItemController extends Controller
         $rules = [
             'category_id' => 'required|exists:categories,id',
             'title' => 'required|string|max:255|unique:items,title,' . $id,
-            'description' => 'nullable|string|max:255',
+            'description' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
             'quantity' => 'required|integer|min:0',
-            'sku' => 'required|string|unique:items,sku|max:50',
+            'sku' => 'required|string|max:50|unique:items,sku,' . $id,
             'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
 
@@ -114,6 +118,10 @@ class ItemController extends Controller
         $filePath = null;
         if ($request->hasFile('picture')) {
             $filePath = $request->file('picture')->store('images', 'public');
+        }
+
+        if ($filePath == null) {
+            $filePath = "";
         }
 
         $item->category_id = $request->category_id;

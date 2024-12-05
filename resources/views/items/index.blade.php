@@ -29,7 +29,7 @@
                                 <tr>
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->title}}</td>
-                                    <td>{{ $item->price}}</td>
+                                    <td>${{number_format($item->price, 2)}}</td>
                                     <td>{{ $item->quantity}}</td>
                                     <td>{{ $item->sku}}</td>
                                     <td>
