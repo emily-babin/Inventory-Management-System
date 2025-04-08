@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index()
     {
         // Get all categories from database
-        $categories = \App\Models\Category::all()->sortBy('category');
+        $categories = \App\Models\Category::all()->sortBy('id');
 
         return view('categories.index')->with('categories', $categories);
     }
